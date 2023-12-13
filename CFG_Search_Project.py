@@ -1,6 +1,7 @@
 import requests
 from pprint import pprint
 
+
 # creating a function to get the recipes based on asked ingredient and diet requirements
 app_id = "453ce7d2" 
 app_key = "e7dce04b937a1760b73317b824ce227d"
@@ -16,51 +17,11 @@ def get_recipes(ingredient):
     return recipe_database
 
 
-# asking user for any diet requirements
-print("1. None \n2. Vegan \n3. Vegetarian \n4. Gluten-free")
-print("5. Dairy-free \n6. Peanut-free \n")
-dietry_requirement = input("Do you have any dietary requirement (Choose the number from above): ")
-
-diet = ""
-if dietry_requirement == "2":
-    diet += "vegan"
-elif dietry_requirement == "3":
-    diet += "vegetarian"
-elif dietry_requirement == "4":
-    diet += "gluten-free"
-elif dietry_requirement == "5":
-    diet += "dairy-free"   
-elif dietry_requirement == "6":
-    diet += "peanut-free"
-else:
-    print("Sorry, we could find any recipes. Please, try again. ")
-
-# asking user for the meal type they want
-print("1. Breakfast \n2. Brunch \n3. Lunch \n4. Dinner \n5. Snacks")
-meal = input("What meal would you like? (Choose the number from above): ")
-meal_type = ""
-if meal == "1":
-    meal_type += "breakfast"
-elif meal == "2":
-    meal_type += "brunch"
-elif meal == "3":
-    meal_type += "lunch"
-elif meal == "4":
-    meal_type += "dinner"
-elif meal == "5":
-    meal_type += "snack"
-
-
-# asking user for the ingredient 
-user_ingredient = input("What are the ingredients you are interested in?: ")
-results = get_recipes(user_ingredient)
-#pprint(results)
-
-
 #printing the recipes and saving it into the recipes.txt file
 def display_recipes ():
   with open('recipes.txt', 'w+', encoding='utf-8') as text_file:
     for recipe in results["hits"]:
+        print("\n")
         print("*" * 100)
         text_file.write("*" * 100)
         text_file.write("\n")
@@ -90,7 +51,50 @@ def display_recipes ():
         print("\n")
 
 
-display_recipes ()
 
+# asking user for any diet requirements
+print("1. None \n2. Vegan \n3. Vegetarian \n4. Gluten-free")
+print("5. Dairy-free \n6. Peanut-free \n")
+dietry_requirement = input("Do you have any dietary requirement (Choose the number from above): ")
 
+diet = ""
+if dietry_requirement == "2":
+    diet += "vegan"
+elif dietry_requirement == "3":
+    diet += "vegetarian"
+elif dietry_requirement == "4":
+    diet += "gluten-free"
+elif dietry_requirement == "5":
+    diet += "dairy-free"   
+elif dietry_requirement == "6":
+    diet += "peanut-free"
+elif int(dietry_requirement) < 1 or int(dietry_requirement) > 6:
+    print("Sorry, we could find any recipes. Please, try again. ")
+  
+
+# asking user for the meal type they want
+print("\n")
+print("1. Breakfast \n2. Brunch \n3. Lunch \n4. Dinner \n5. Snacks \n")
+meal = input("What meal would you like? (Choose the number from above): ")
+
+meal_type = ""
+if meal == "1":
+    meal_type += "breakfast"
+elif meal == "2":
+    meal_type += "brunch"
+elif meal == "3":
+    meal_type += "lunch"
+elif meal == "4":
+    meal_type += "dinner"
+elif meal == "5":
+    meal_type += "snack"
+else:
+    print("Meal type not found. Please, try again.")
    
+
+# asking user for the ingredient 
+print("\n")
+user_ingredient = input("What are the ingredients you are interested in?: ")
+results = get_recipes(user_ingredient)
+#pprint(results)
+display_recipes ()
