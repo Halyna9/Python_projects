@@ -1,2 +1,4 @@
-# Python_projects
-Python projects I have created while learning how to code ;)
+# Recipe Search Project
+This program allows users to search for recipes based on dietary requirements, meal type and ingredients.   
+This program uses Edamam API website to retrieve recipes.
+It also creates and saves all recipes into a text file.
