@@ -1,12 +1,12 @@
-## Snowfall Animation
+# Snowfall Animation
 This Python program creates a simple snowfall animation in the terminal using ASCII characters. It generates a grid and simulates falling snowflakes.
 
 ## Setup and Usage
 
-# Requirements:
+## Requirements:
 Python 3.x installed on your system.
 
-# Installation and Running the Program:
+## Installation and Running the Program:
 Download the snowfall.py file.
 Run the script using Python: python snowfall.py in your terminal or command prompt.
 
